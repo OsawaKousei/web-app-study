@@ -1,0 +1,19 @@
+{
+	"name": "backend-vscode",
+    // docker-compose.ymlのfrontにアタッチする
+    "dockerComposeFile": "../../docker-compose.yml",
+	"service": "backend",
+    // 起動ディレクトリの設定
+	"workspaceFolder": "/app",
+    // 拡張機能の設定。
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"esbenp.prettier-vscode",
+				"dbaeumer.vscode-eslint",
+				"dsznajder.es7-react-js-snippets"
+			]
+		}
+	},
+	"shutdownAction": "none"
+}
