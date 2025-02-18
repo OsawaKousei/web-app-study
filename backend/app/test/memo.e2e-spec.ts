@@ -60,14 +60,10 @@ describe('Memo E2E', () => {
   });
 
   it('DELETE /memos/:id - メモの削除', () => {
-    return request(app.getHttpServer())
-      .delete(`/memos/${memoId}`)
-      .expect(200);
+    return request(app.getHttpServer()).delete(`/memos/${memoId}`).expect(204);
   });
 
   it('GET /memos/:id - 削除されたメモは404エラー', () => {
-    return request(app.getHttpServer())
-      .get(`/memos/${memoId}`)
-      .expect(404);
+    return request(app.getHttpServer()).get(`/memos/${memoId}`).expect(404);
   });
 });
