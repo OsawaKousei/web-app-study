@@ -6,6 +6,10 @@ interface Memo {
   content: string;
 }
 
+// Next,jsは自動でプロジェクトのルートディレクトリにある .envファイルを読み込む
+// NEXT_PUBLIC_API_URL が設定されていない場合は、デフォルト値として http://localhost:8000 を利用
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
 export default function Page() {
   const [memos, setMemos] = useState<Memo[]>([]);
   const [newMemo, setNewMemo] = useState('');
@@ -13,7 +17,7 @@ export default function Page() {
   // API経由でメモ一覧を取得
   const fetchMemos = async () => {
     try {
-      const res = await fetch('http://localhost:8000/memos');
+      const res = await fetch(`${API_URL}/memos`);
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
@@ -39,7 +43,7 @@ export default function Page() {
     e.preventDefault();
     if (!newMemo.trim()) return;
     try {
-      await fetch('http://localhost:8000/memos', {
+      await fetch(`${API_URL}/memos`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ content: newMemo })

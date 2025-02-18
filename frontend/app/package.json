@@ -17,6 +17,7 @@
     "ts-jest": "^29.2.5"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.26.0",
     "@eslint/eslintrc": "^3",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
