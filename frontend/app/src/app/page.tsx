@@ -58,7 +58,6 @@ export default function Page() {
   return (
     <div>
       <h1>Memos App</h1>
-      <h2>Post New Memo</h2>
       <form onSubmit={handleSubmit}>
         <input 
           type="text" 

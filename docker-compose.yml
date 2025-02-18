@@ -26,8 +26,6 @@ services:
       - frontend-node-modules:/app/node_modules
     ports:
       - "3000:3000"
-    environment:
-      - WATCHPACK_POLLING=true # ホットリロードの設定
     networks:
       - app-network
 
