@@ -42,7 +42,7 @@ export class MemoService {
 
   update(id: number, content: string): Memo {
     const memo = this.findOne(id);
-    memo.content = content;
+    memo.content = content.trim();
     return memo;
   }
 
