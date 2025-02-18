@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  BadRequestException,
+} from '@nestjs/common';
 
 export interface Memo {
   id: number;
@@ -23,6 +27,14 @@ export class MemoService {
   }
 
   create(content: string): Memo {
+    if (!content || content.trim().length === 0) {
+      throw new BadRequestException('Content cannot be empty');
+    }
+    if (content.length > 1000) {
+      throw new BadRequestException(
+        'Content exceeds maximum length of 1000 characters',
+      );
+    }
     const memo = { id: this.idCounter++, content };
     this.memos.push(memo);
     return memo;
